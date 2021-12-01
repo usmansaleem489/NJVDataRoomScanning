@@ -75,7 +75,7 @@
             this.btnScan.Location = new System.Drawing.Point(16, 127);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(164, 23);
-            this.btnScan.TabIndex = 3;
+            this.btnScan.TabIndex = 2;
             this.btnScan.Text = "B-Form Scan";
             this.btnScan.UseVisualStyleBackColor = true;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
@@ -132,7 +132,7 @@
             this.btnRF.Location = new System.Drawing.Point(16, 93);
             this.btnRF.Name = "btnRF";
             this.btnRF.Size = new System.Drawing.Size(164, 23);
-            this.btnRF.TabIndex = 9;
+            this.btnRF.TabIndex = 1;
             this.btnRF.Text = "Registration Form Scan";
             this.btnRF.UseVisualStyleBackColor = true;
             this.btnRF.Click += new System.EventHandler(this.btnScan_Click);
@@ -142,7 +142,7 @@
             this.button2.Location = new System.Drawing.Point(16, 161);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(164, 23);
-            this.button2.TabIndex = 10;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Father CNIC Front Scan";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -152,7 +152,7 @@
             this.btnFCB.Location = new System.Drawing.Point(16, 195);
             this.btnFCB.Name = "btnFCB";
             this.btnFCB.Size = new System.Drawing.Size(164, 23);
-            this.btnFCB.TabIndex = 11;
+            this.btnFCB.TabIndex = 4;
             this.btnFCB.Text = "Father CNIC Back Scan";
             this.btnFCB.UseVisualStyleBackColor = true;
             this.btnFCB.Click += new System.EventHandler(this.button2_Click);
@@ -162,7 +162,7 @@
             this.btnMCF.Location = new System.Drawing.Point(16, 229);
             this.btnMCF.Name = "btnMCF";
             this.btnMCF.Size = new System.Drawing.Size(164, 23);
-            this.btnMCF.TabIndex = 12;
+            this.btnMCF.TabIndex = 5;
             this.btnMCF.Text = "Mother CNIC Front Scan";
             this.btnMCF.UseVisualStyleBackColor = true;
             this.btnMCF.Click += new System.EventHandler(this.button2_Click);
@@ -172,7 +172,7 @@
             this.btnMCB.Location = new System.Drawing.Point(16, 263);
             this.btnMCB.Name = "btnMCB";
             this.btnMCB.Size = new System.Drawing.Size(164, 23);
-            this.btnMCB.TabIndex = 13;
+            this.btnMCB.TabIndex = 6;
             this.btnMCB.Text = "Mother CNIC Back Scan";
             this.btnMCB.UseVisualStyleBackColor = true;
             this.btnMCB.Click += new System.EventHandler(this.button2_Click);
@@ -182,7 +182,7 @@
             this.btnGoBack.Location = new System.Drawing.Point(16, 405);
             this.btnGoBack.Name = "btnGoBack";
             this.btnGoBack.Size = new System.Drawing.Size(75, 23);
-            this.btnGoBack.TabIndex = 14;
+            this.btnGoBack.TabIndex = 9;
             this.btnGoBack.Text = "Go Back";
             this.btnGoBack.UseVisualStyleBackColor = true;
             this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click);
@@ -216,7 +216,7 @@
             this.button1.Location = new System.Drawing.Point(107, 405);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 17;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Save and Start New";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -226,7 +226,7 @@
             this.btnPicScan.Location = new System.Drawing.Point(16, 293);
             this.btnPicScan.Name = "btnPicScan";
             this.btnPicScan.Size = new System.Drawing.Size(164, 23);
-            this.btnPicScan.TabIndex = 18;
+            this.btnPicScan.TabIndex = 7;
             this.btnPicScan.Text = "Picture Scan";
             this.btnPicScan.UseVisualStyleBackColor = true;
             this.btnPicScan.Click += new System.EventHandler(this.btnPicScan_Click);
