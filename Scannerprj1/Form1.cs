@@ -132,11 +132,9 @@ namespace Scannerprj1
             Control ctrl = ((Control)sender);
             pbLoading.Visible = true;
             lblScanning.Visible = true;
-            //string fileName = "";
 
             foreach (WIA.Item item in wiaDevice.Items)
-            {
-                //StringBuilder propsbuilder = new StringBuilder();
+            {               
 
                 foreach (WIA.Property itemProperty in item.Properties)
                 {
@@ -166,70 +164,29 @@ namespace Scannerprj1
                 }
 
                 var image = (ImageFile)item.Transfer(WIA.FormatID.wiaFormatPNG);
-                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";
-
-                //bool buttonFCFpressed = false;
-                //bool buttonFCBpressed = false;
-                //bool buttonMCFpressed = false;
-                //bool buttonMCBpressed = false;
-                //bool buttonImagepressed = false;
+                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";                
                 string combinedPath = "";
 
                 switch (buttonName)
                 {
                     case "button2":
-                        //fileName[2] = Form2.student_father[2] + "-FCF.png";
                         combinedPath = Path.Combine(directory, Form2.student_father[2] + "-FCF.png");
-                        csvInitials[2] = "Y";
-                        //buttonFCFpressed = true;
+                        csvInitials[2] = "Y";                        
                         break;
                     case "btnFCB":
-                        //fileName[3] = Form2.student_father[2] + "-FCB.png";
                         combinedPath = Path.Combine(directory, Form2.student_father[2] + "-FCB.png");
                         csvInitials[3] = "Y";
-                        //buttonFCBpressed = true;
                         break;
                     case "btnMCF":
-                        //fileName[4] = Form2.student_father[2] + "-MCF.png";
                         combinedPath = Path.Combine(directory, Form2.student_father[2] + "-MCF.png");
                         csvInitials[4] = "Y";
-                        //buttonMCFpressed = true;
                         break;
                     case "btnMCB":
-                        //fileName[5] = Form2.student_father[2] + "-MCB.png";
                         combinedPath = Path.Combine(directory, Form2.student_father[2] + "-MCB.png");
                         csvInitials[5] = "Y";
-                        //buttonMCBpressed = true;
-                        break;
-                    case "btnPic":
-                        //fileName[6] = Form2.student_father[2] + "-PIC.png";
-                        combinedPath = Path.Combine(directory, Form2.student_father[2] + "-PIC.png");
-                        csvInitials[6] = "Y";
-                        //buttonImagepressed = true;
                         break;
                 }
 
-                //if (buttonFCFpressed)
-                //{
-                //    combinedPath = Path.Combine(directory, fileName[2]);
-                //}
-                //else if (buttonFCBpressed)
-                //{
-                //    combinedPath = Path.Combine(directory, fileName[3]);
-                //}
-                //else if (buttonMCFpressed)
-                //{
-                //    combinedPath = Path.Combine(directory, fileName[4]);
-                //}
-                //else if (buttonMCBpressed)
-                //{
-                //    combinedPath = Path.Combine(directory, fileName[5]);
-                //}
-                //else if (buttonImagepressed)
-                //{
-                //    combinedPath = Path.Combine(directory, fileName[6]);
-                //}                
-               
                 if (File.Exists(combinedPath))
                 {
                     File.Delete(combinedPath);
@@ -246,8 +203,68 @@ namespace Scannerprj1
         private void btnGoBack_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-        }
+        }    
 
+        private void btnPicScan_Click(object sender, EventArgs e)
+        {
+            WIA.CommonDialog wiaDlg;
+            WIA.Device wiaDevice;
+            WIA.DeviceManager wiaManager = new DeviceManager();
+
+            wiaDlg = new WIA.CommonDialog();
+            wiaDevice = wiaDlg.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, false, false);
+            Control ctrl = ((Control)sender);
+            pbLoading.Visible = true;
+            lblScanning.Visible = true;
+
+            foreach (WIA.Item item in wiaDevice.Items)
+            {
+
+                foreach (WIA.Property itemProperty in item.Properties)
+                {
+                    IProperty tempProperty;
+                    Object tempNewProperty;
+
+                    if (itemProperty.Name.Equals("Horizontal Resolution"))
+                    {
+                        tempNewProperty = 100;
+                        ((IProperty)itemProperty).set_Value(ref tempNewProperty);
+                    }
+                    else if (itemProperty.Name.Equals("Vertical Resolution"))
+                    {
+                        tempNewProperty = 100;
+                        ((IProperty)itemProperty).set_Value(ref tempNewProperty);
+                    }
+                    else if (itemProperty.Name.Equals("Horizontal Extent"))
+                    {
+                        tempNewProperty = 250;
+                        ((IProperty)itemProperty).set_Value(ref tempNewProperty);
+                    }
+                    else if (itemProperty.Name.Equals("Vertical Extent"))
+                    {
+                        tempNewProperty = 250;
+                        ((IProperty)itemProperty).set_Value(ref tempNewProperty);
+                    }
+                }
+
+                var image = (ImageFile)item.Transfer(WIA.FormatID.wiaFormatPNG);
+                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";
+                string combinedPath = "";
+                combinedPath = Path.Combine(directory, Form2.student_father[2] + "-PIC.png");
+                csvInitials[6] = "Y";                
+
+                if (File.Exists(combinedPath))
+                {
+                    File.Delete(combinedPath);
+                }
+                image.SaveFile(combinedPath);
+                pictureBox1.ImageLocation = combinedPath;
+                pbLoading.Visible = false;
+                lblScanning.Visible = false;
+                ctrl.BackColor = Color.Green;
+                ctrl.ForeColor = Color.White;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             // Appending to CSV
@@ -296,11 +313,6 @@ namespace Scannerprj1
             {
                 MessageBox.Show("No CSV File Found!");
             }
-        }
-
-        private void btnPicScan_Click(object sender, EventArgs e)
-        {
-
         }
     }
     public class ScannedValuestoCSV
