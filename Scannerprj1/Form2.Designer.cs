@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxGetLMS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,7 +81,7 @@
             this.button1.Location = new System.Drawing.Point(291, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -110,8 +111,8 @@
             this.btnToScanForm.Location = new System.Drawing.Point(291, 114);
             this.btnToScanForm.Name = "btnToScanForm";
             this.btnToScanForm.Size = new System.Drawing.Size(75, 23);
-            this.btnToScanForm.TabIndex = 7;
-            this.btnToScanForm.Text = "Lets Scan";
+            this.btnToScanForm.TabIndex = 3;
+            this.btnToScanForm.Text = "Let\'s Scan";
             this.btnToScanForm.UseVisualStyleBackColor = true;
             this.btnToScanForm.Click += new System.EventHandler(this.btnToScanForm_Click);
             // 
@@ -128,6 +129,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxGetLMS);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NJV Data Room Scanning";

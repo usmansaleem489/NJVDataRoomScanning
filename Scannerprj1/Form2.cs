@@ -48,7 +48,7 @@ namespace Scannerprj1
         }
         String[] search_student_father(String searchID)
         {
-            var strLines = System.IO.File.ReadLines("C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\ForBatchScanning.csv");
+            var strLines = System.IO.File.ReadLines(".\\ForBatchScanning.csv");
             foreach (var line in strLines)
             {
                 if (line.Split(',')[0].Equals(searchID))
@@ -85,7 +85,7 @@ namespace Scannerprj1
 
         private void btnToScanForm_Click(object sender, EventArgs e)
         {
-            int j = 0;
+            int scannerCount = 0;
             if (!string.IsNullOrEmpty(textBoxGetLMS.Text))
             {
                 if (!string.IsNullOrEmpty(labelStudentName.Text) )
@@ -93,23 +93,27 @@ namespace Scannerprj1
                     for (int i = 1; i <= deviceManager.DeviceInfos.Count; i++)
                     {
                         
-                        if (deviceManager.DeviceInfos[i].Type != WiaDeviceType.ScannerDeviceType)
+                        if (deviceManager.DeviceInfos[i].Type == WiaDeviceType.ScannerDeviceType)
                         {
-                            j++;
+                            scannerCount++;
                             continue;
                         }
                     }
-                    if(j == deviceManager.DeviceInfos.Count)
-                    {
-                        MessageBox.Show("No Scanner Detected");
-                    }
-                    else
-                    {
+                    #if DEBUG
+                        if (scannerCount >=0) {
+                    #else
+                        if (scannerCount > 0) {              
+                    #endif                        
+                    
                         this.Hide();
                         Form1 scanForm = new Form1();
                         //scanForm.Closed += (s, args) => this.Close();
                         scanForm.ShowDialog();
-                        this.Show();
+                        this.Show();                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Scanner Detected");
                     }                   
                 }
                 else

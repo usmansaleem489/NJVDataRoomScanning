@@ -29,6 +29,8 @@ namespace Scannerprj1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //System.IO.Directory.CreateDirectory("ScannedImages");
+
             try
             {
                 for (int i = 1; i <= deviceManager.DeviceInfos.Count; i++)
@@ -76,7 +78,7 @@ namespace Scannerprj1
                 var device = AvailableScanner.Connect();
                 var ScannerItem = device.Items[1];
                 var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatPNG);
-                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";
+                string directory = @".\ScannedImages";
                 //bool buttonRFpressed = false;
                 //bool buttonBFpressed = false;
                 string combinedPath = "";
@@ -138,7 +140,7 @@ namespace Scannerprj1
 
                 foreach (WIA.Property itemProperty in item.Properties)
                 {
-                    IProperty tempProperty;
+                    //IProperty tempProperty;
                     Object tempNewProperty;
 
                     if (itemProperty.Name.Equals("Horizontal Resolution"))
@@ -164,7 +166,8 @@ namespace Scannerprj1
                 }
 
                 var image = (ImageFile)item.Transfer(WIA.FormatID.wiaFormatPNG);
-                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";                
+                string directory = @".\ScannedImages";               
+
                 string combinedPath = "";
 
                 switch (buttonName)
@@ -248,7 +251,7 @@ namespace Scannerprj1
                 }
 
                 var image = (ImageFile)item.Transfer(WIA.FormatID.wiaFormatPNG);
-                string directory = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\Scanned Documents";
+                string directory = @".\ScannedImages";
                 string combinedPath = "";
                 combinedPath = Path.Combine(directory, Form2.student_father[2] + "-PIC.png");
                 csvInitials[6] = "Y";                
@@ -268,12 +271,13 @@ namespace Scannerprj1
         private void button1_Click(object sender, EventArgs e)
         {
             // Appending to CSV
-            var CSVpath = @"C:\\Users\\MuhammadUsmanSaleem\\OneDrive - njv\\Documents\\ScanningRecord.csv";
+            var CSVpath = ".\\ScanningRecord.csv";
             var records = new List<ScannedValuestoCSV>
                 {
                     new ScannedValuestoCSV {
                         ID = Form2.student_father[2],
-                        Time = DateTime.Now.ToString("MM/dd/yyyy HH:mm"),
+                        Date = DateTime.Now.ToString("MM/dd/yyyy"),
+                        Time = DateTime.Now.ToString("HH:mm"),
                         RG = csvInitials[0] == "Y" ? "Y" : "N",
                         BF = csvInitials[1] == "Y" ? "Y" : "N",
                         FCF = csvInitials[2] == "Y" ? "Y" : "N",
@@ -318,6 +322,7 @@ namespace Scannerprj1
     public class ScannedValuestoCSV
     {
         public string ID { get; set; }
+        public string Date { get; set; }
         public string Time { get; set; }
         public string RG { get; set; }
         public string BF { get; set; }

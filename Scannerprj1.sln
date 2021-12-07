@@ -14,7 +14,6 @@ Global
 		{AF964640-DE10-466B-8FCC-EFEC606CAF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF964640-DE10-466B-8FCC-EFEC606CAF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF964640-DE10-466B-8FCC-EFEC606CAF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF964640-DE10-466B-8FCC-EFEC606CAF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
